@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "poOEcrcnf54=",
+  "dgSpecHash": "EBUE/llsgQE=",
   "success": true,
-  "projectFilePath": "D:\\Users\\Lucas\\Desktop\\ProvaBackend\\APIPedidos\\APIPedidos.csproj",
+  "projectFilePath": "D:\\Users\\Lucas\\Documents\\GitHub\\API_pedidos\\APIPedidos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Lucas\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -19,7 +19,12 @@ builder.Services.AddControllers()
     });
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, "APIPedidos.xml");
+    c.IncludeXmlComments(xmlPath);
+});
+
 
 var app = builder.Build();
 

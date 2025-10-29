@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APIPedidos</name>
+    </assembly>
+    <members>
+        <member name="M:PedidosController.Listar(System.String)">
+            <summary>
+            Lista com filtro por status.
+            </summary>
+            <param name="status">"aberto" ou "fechado" (opcional).</param>
+            <returns>Lista de pedidos com produtos.</returns>
+        </member>
+        <member name="M:PedidosController.Obter(System.Int32)">
+            <summary>
+            Pedido pelo seu ID com informaçõs dos produtos.
+            </summary>
+            <param name="id">Identificador numérico do pedido.</param>
+            <returns>Pedido detalhado com itens.</returns>
+            <response code="404">Pedido não encontrado.</response>
+        </member>
+        <member name="M:PedidosController.Criar(CriarPedidoDTO)">
+            <summary>
+            Cria um novo pedido.
+            </summary>
+            <param name="body">Dados para criação do pedido.</param>
+            <returns>Pedido criado já em estado aberto.</returns>
+            <response code="201">Pedido criado com sucesso.</response>
+            <response code="400">Dados inválidos.</response>
+        </member>
+        <member name="M:PedidosController.AdicionarItens(System.Int32,AdicionarItensDTO)">
+            <summary>
+            Adiciona itens a um pedido aberto.
+            </summary>
+            <param name="id">ID do pedido.</param>
+            <param name="body">Itens a serem adicionados.</param>
+            <returns>Pedido atualizado com novos itens.</returns>
+            <response code="404">Pedido não encontrado.</response>
+            <response code="400">Pedido fechado ou item inválido.</response>
+        </member>
+        <member name="M:PedidosController.RemoverItem(System.Int32,System.Int32)">
+            <summary>
+            Remove produto do pedido informado.
+            </summary>
+            <param name="id">ID do pedido.</param>
+            <param name="produtoId">ID do produto do pedido.</param>
+            <returns>Pedido atualizado sem o item removido.</returns>
+            <response code="404">Pedido não encontrado.</response>
+            <response code="400">Pedido fechado ou item inexistente.</response>
+        </member>
+        <member name="M:PedidosController.Fechar(System.Int32)">
+            <summary>
+            Fecha um pedido.
+            </summary>
+            <param name="id">ID do pedido.</param>
+            <returns>Confirmação de fechamento.</returns>
+            <response code="404">Pedido não encontrado.</response>
+            <response code="400">Pedido já está fechado.</response>
+        </member>
+    </members>
+</doc>

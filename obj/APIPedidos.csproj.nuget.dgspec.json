@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\Lucas\\Desktop\\ProvaBackend\\APIPedidos\\APIPedidos.csproj": {}
+    "D:\\Users\\Lucas\\Documents\\GitHub\\API_pedidos\\APIPedidos.csproj": {}
   },
   "projects": {
-    "D:\\Users\\Lucas\\Desktop\\ProvaBackend\\APIPedidos\\APIPedidos.csproj": {
+    "D:\\Users\\Lucas\\Documents\\GitHub\\API_pedidos\\APIPedidos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\Lucas\\Desktop\\ProvaBackend\\APIPedidos\\APIPedidos.csproj",
+        "projectUniqueName": "D:\\Users\\Lucas\\Documents\\GitHub\\API_pedidos\\APIPedidos.csproj",
         "projectName": "APIPedidos",
-        "projectPath": "D:\\Users\\Lucas\\Desktop\\ProvaBackend\\APIPedidos\\APIPedidos.csproj",
+        "projectPath": "D:\\Users\\Lucas\\Documents\\GitHub\\API_pedidos\\APIPedidos.csproj",
         "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\Lucas\\Desktop\\ProvaBackend\\APIPedidos\\obj\\",
+        "outputPath": "D:\\Users\\Lucas\\Documents\\GitHub\\API_pedidos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"

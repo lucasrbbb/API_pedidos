@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class PedidosController : ControllerBase
 {
-    //injeção service 
     private readonly IPedidoService _service;
     public PedidosController(IPedidoService service) => _service = service;
 
-    //lista pedidos com filtro
-
+    /// <summary>
+    /// Lista pedidos com filtro por status.
+    /// </summary>
+    /// <param name="status">"aberto" ou "fechado" (opcional).</param>
+    /// <returns>Lista de pedidos com produtos.</returns>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<PedidoListDTO>>> Listar([FromQuery] string? status)
     {
@@ -20,8 +22,12 @@ public class PedidosController : ControllerBase
         catch (ArgumentException ex) { return BadRequest(ex.Message); }
     }
 
-    //lista pedido por id
-
+    /// <summary>
+    /// Pedido pelo seu ID com informaçõs dos produtos.
+    /// </summary>
+    /// <param name="id">Identificador numérico do pedido.</param>
+    /// <returns>Pedido detalhado com itens.</returns>
+    /// <response code="404">Pedido não encontrado.</response>
     [HttpGet("{id:int}")]
     public async Task<ActionResult<PedidoDetalheDTO>> Obter(int id)
     {
@@ -29,8 +35,13 @@ public class PedidosController : ControllerBase
         return pedido is null ? NotFound("Pedido não encontrado.") : Ok(pedido);
     }
 
-    // criar pedido -- > ok
-
+    /// <summary>
+    /// Cria um novo pedido.
+    /// </summary>
+    /// <param name="body">Dados para criação do pedido.</param>
+    /// <returns>Pedido criado já em estado aberto.</returns>
+    /// <response code="201">Pedido criado com sucesso.</response>
+    /// <response code="400">Dados inválidos.</response>
     [HttpPost]
     public async Task<ActionResult<PedidoDetalheDTO>> Criar([FromBody] CriarPedidoDTO body)
     {
@@ -42,9 +53,14 @@ public class PedidosController : ControllerBase
         catch (ArgumentException ex) { return BadRequest(ex.Message); }
     }
 
-    // adicionar item
-
-
+    /// <summary>
+    /// Adiciona itens a um pedido aberto.
+    /// </summary>
+    /// <param name="id">ID do pedido.</param>
+    /// <param name="body">Itens a serem adicionados.</param>
+    /// <returns>Pedido atualizado com novos itens.</returns>
+    /// <response code="404">Pedido não encontrado.</response>
+    /// <response code="400">Pedido fechado ou item inválido.</response>
     [HttpPost("{id:int}/adicionar-itens")]
     public async Task<ActionResult<PedidoDetalheDTO>> AdicionarItens(int id, [FromBody] AdicionarItensDTO body)
     {
@@ -57,8 +73,14 @@ public class PedidosController : ControllerBase
         catch (ArgumentException ex) { return BadRequest(ex.Message); }
     }
 
-    // remover item 
-
+    /// <summary>
+    /// Remove produto do pedido informado.
+    /// </summary>
+    /// <param name="id">ID do pedido.</param>
+    /// <param name="produtoId">ID do produto do pedido.</param>
+    /// <returns>Pedido atualizado sem o item removido.</returns>
+    /// <response code="404">Pedido não encontrado.</response>
+    /// <response code="400">Pedido fechado ou item inexistente.</response>
     [HttpDelete("{id:int}/remover-item/{produtoId:int}")]
     public async Task<ActionResult<PedidoDetalheDTO>> RemoverItem(int id, int produtoId)
     {
@@ -71,8 +93,13 @@ public class PedidosController : ControllerBase
         catch (ArgumentException ex) { return BadRequest(ex.Message); }
     }
 
-    // fechar
-
+    /// <summary>
+    /// Fecha um pedido.
+    /// </summary>
+    /// <param name="id">ID do pedido.</param>
+    /// <returns>Confirmação de fechamento.</returns>
+    /// <response code="404">Pedido não encontrado.</response>
+    /// <response code="400">Pedido já está fechado.</response>
     [HttpPost("{id:int}/fechar")]
     public async Task<IActionResult> Fechar(int id)
     {
@@ -84,3 +111,4 @@ public class PedidosController : ControllerBase
         catch (InvalidOperationException ex) { return BadRequest(ex.Message); }
     }
 }
+
